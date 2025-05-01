@@ -9,7 +9,7 @@
 </head>
 <body class="font-poppins ">
         <!-- Header -->
-        <header class="bg-blue-500 shadow-md p-4 flex justify-between items-center">
+        <header class="bg-blue-700 shadow-md p-4 flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center space-x-2">
                 <img src="{{ asset('images/logo-presensi.png') }}" alt="Logo" class="h-8 w-auto">
