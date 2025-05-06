@@ -1,13 +1,129 @@
-{{-- @extends('layouts.app')
+<x-headeradmin>
 
-@section('content') --}}
-    <h2>Welcome Admin</h2>
-<form action="{{ route('logout') }}" method="POST" class="">
-                        @csrf
-                        <button type="submit" class="flex gap-1 justify-start cursor-pointer items-center w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
-                                <path fill-rule="evenodd" d="M16.5 3.75a1.5 1.5 0 0 1 1.5 1.5v13.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5V15a.75.75 0 0 0-1.5 0v3.75a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5.25a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3V9A.75.75 0 1 0 9 9V5.25a1.5 1.5 0 0 1 1.5-1.5h6ZM5.78 8.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 0 0 0 1.06l3 3a.75.75 0 0 0 1.06-1.06l-1.72-1.72H15a.75.75 0 0 0 0-1.5H4.06l1.72-1.72a.75.75 0 0 0 0-1.06Z" clip-rule="evenodd" />
-                            </svg>
-                            Logout
-                        </button>
-                    </form>
+
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+            <div class="flex justify-between">
+                <div>
+                    <p class="text-gray-500">Hadir Hari Ini</p>
+                    <p class="text-2xl font-bold">87</p>
+                </div>
+                <div class="bg-green-100 text-green-600 p-3 rounded-full">
+                    <i class="fas fa-user-check text-xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow">
+            <div class="flex justify-between">
+                <div>
+                    <p class="text-gray-500">Terlambat</p>
+                    <p class="text-2xl font-bold">5</p>
+                </div>
+                <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full">
+                    <i class="fas fa-clock text-xl"></i>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+            <div class="flex justify-between">
+                <div>
+                    <p class="text-gray-500">Total Pegawai</p>
+                    <p class="text-2xl font-bold">120</p>
+                </div>
+                <div class="bg-purple-100 text-purple-600 p-3 rounded-full">
+                    <i class="fas fa-users text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Presensi Hari Ini -->
+    <div class="bg-white rounded-lg shadow mb-8">
+        <div class="p-4 border-b">
+            <h3 class="font-semibold text-lg">Presensi Hari Ini</h3>
+        </div>
+        <div class="p-4">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jam Masuk</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jam Pulang</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Andi Wijaya</td>
+                            <td class="px-6 py-4 whitespace-nowrap">08:00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">17:00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Hadir</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <button class="text-blue-600 hover:text-blue-800">Detail</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Budi Santoso</td>
+                            <td class="px-6 py-4 whitespace-nowrap">08:15</td>
+                            <td class="px-6 py-4 whitespace-nowrap">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">Terlambat</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <button class="text-blue-600 hover:text-blue-800">Detail</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">Citra Dewi</td>
+                            <td class="px-6 py-4 whitespace-nowrap">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Izin</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <button class="text-blue-600 hover:text-blue-800">Detail</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grafik Presensi -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-lg mb-4">Statistik Presensi Bulan Ini</h3>
+            <div class="h-64">
+                <!-- Tempat untuk grafik (bisa menggunakan Chart.js dll) -->
+                <div class="bg-gray-100 rounded h-full flex items-center justify-center">
+                    <p class="text-gray-500">Grafik Presensi</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-lg mb-4">Top 5 Pegawai Teladan</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="h-10 w-10 rounded-full">
+                        <div>
+                            <p class="font-medium">Dewi Lestari</p>
+                            <p class="text-sm text-gray-500">100% kehadiran</p>
+                        </div>
+                    </div>
+                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm">Teladan</span>
+                </div>
+                <!-- Tambahan pegawai teladan lainnya -->
+            </div>
+        </div>
+    </div>
+</x-headeradmin>

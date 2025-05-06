@@ -1,4 +1,4 @@
-<x-headerpegawai>
+<x-header>
     <div class="container mx-auto px-4 py-8 max-w-md">
       <!-- Profile Card -->
     <div class="bg-gradient-to-r from-blue-50 to-white rounded-2xl p-5 mb-6 border border-gray-200 shadow-md hover:shadow-lg transition">
@@ -108,4 +108,4 @@
         </div>
     </div>  
       
-  </x-headerpegawai>
+  </x-header>

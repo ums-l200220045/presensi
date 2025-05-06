@@ -1,4 +1,4 @@
-<x-headerpegawai>
+<x-header>
   <div class="max-w-3xl mx-auto mt-6 px-4 sm:px-6 space-y-6">
 
     <!-- Filter Bulan -->
@@ -37,6 +37,5 @@
         </tbody>
       </table>
     </div>
-
   </div>
-</x-headerpegawai>
+</x-header>
