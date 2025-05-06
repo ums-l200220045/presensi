@@ -58,7 +58,7 @@
                 <h2 class="text-2xl font-bold text-gray-800">Dashboard Presensi</h2>
                 <div class="flex items-center space-x-4">
                     <div class="flex items-center space-x-2">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="h-8 w-8 rounded-full">
+                        <i class="fa-solid fa-circle-user text-3xl text-blue-600"></i>
                         <span class="font-medium">{{ Auth::user()->name }}</span>
                     </div>
                 </div>
