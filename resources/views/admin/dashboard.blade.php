@@ -31,7 +31,7 @@
             <div class="flex justify-between">
                 <div>
                     <p class="text-gray-500">Total Pegawai</p>
-                    <p class="text-2xl font-bold">120</p>
+                    <p class="text-2xl font-bold">{{ $totalPegawai }}</p>
                 </div>
                 <div class="bg-purple-100 text-purple-600 p-3 rounded-full">
                     <i class="fas fa-users text-xl"></i>

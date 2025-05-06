@@ -19,7 +19,6 @@ class PegawaiController extends Controller
         return view('admin/daftarpegawai', compact('pegawais'));
     }
 
-
     public function store(Request $request)
     {
         $validated = $request->validate([

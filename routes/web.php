@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PegawaiController;
+
 
 
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
@@ -8,9 +10,10 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.post'); // 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth:admin']], function () {
-    Route::get('dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    // Route::get('dashboard', function () {
+    //     return view('admin.dashboard');
+    // })->name('admin.dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('input-pegawai', function () {
         return view('admin.inputpegawai');
