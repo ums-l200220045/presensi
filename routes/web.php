@@ -15,4 +15,9 @@ Route::group(['middleware' => ['auth:pegawai']], function () {
     Route::get('pegawai/home', function () {
         return view('pegawai.home');
     })->name('pegawai.home');
+
+    Route::get('rekap', function() {
+        return view('pegawai.rekap');
+    })->name('rekap');
+
 });
