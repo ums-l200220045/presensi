@@ -14,7 +14,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Check In/Out Section -->
         <div class="grid grid-cols-2 gap-4 mb-6">
             <div class="bg-white rounded-lg p-3 text-center border border-gray-200 shadow-sm">
