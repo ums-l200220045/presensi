@@ -9,6 +9,10 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    Route::get('input-pegawai', function () {
+        return view('admin.inputpegawai');
+    })->name('input-pegawai');
 });
 
 Route::group(['middleware' => ['auth:pegawai']], function () {
