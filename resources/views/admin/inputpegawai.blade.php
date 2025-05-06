@@ -1,7 +1,6 @@
 <x-headeradmin>
     <div class="flex items-center justify-center">
       <div class="bg-white rounded-lg shadow p-6 w-xl">
-        
         <!-- Informasi Sebelum Form -->
         <div class="mb-6 text-center">
           <h2 class="text-xl font-semibold text-gray-800">Tambah Data Pegawai</h2>
