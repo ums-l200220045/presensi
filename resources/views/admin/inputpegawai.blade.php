@@ -1,10 +1,13 @@
 <x-headeradmin>
 <div class="p-6">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6">Tambah Data Pegawai</h2>
-
     <div class="bg-white rounded-lg shadow p-6 max-w-xl">
-        <form action="" method="POST" class="space-y-4">
+        <form action="{{ route('pegawai.store') }}" method="POST" class="space-y-4">
             @csrf
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Nama</label>
+                <input type="text" id="nama" name="nama" required
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
 
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>

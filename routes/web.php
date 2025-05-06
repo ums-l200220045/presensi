@@ -1,18 +1,26 @@
 <?php
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PegawaiController;
+
 
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post'); // Fix POST Method
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth:admin']], function () {
-    Route::get('admin/dashboard', function () {
+    Route::get('dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
     Route::get('input-pegawai', function () {
         return view('admin.inputpegawai');
     })->name('input-pegawai');
+
+    Route::post('/pegawai', [PegawaiController::class, 'store'])->name('pegawai.store');
+
+    Route::get('/pegawai', [PegawaiController::class, 'list'])->name('pegawai.index');
+
+
 });
 
 Route::group(['middleware' => ['auth:pegawai']], function () {

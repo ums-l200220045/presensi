@@ -11,7 +11,7 @@ class Pegawai extends Model implements AuthenticatableContract
 {
     use HasFactory, Authenticatable;
 
-    protected $fillable = ['email', 'password', 'jabatan', 'bidang'];
+    protected $fillable = ['name', 'email', 'password', 'jabatan', 'bidang'];
 
     protected $hidden = ['password'];
 }
