@@ -24,16 +24,58 @@
         </div>
         </div>
     </div>
-      <!-- Check In/Out Section -->
-      <div class="grid grid-cols-2 gap-4 mb-6">
-        <div class="bg-green-50 border border-green-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
-          <p class="text-sm font-medium text-green-700">Check In</p>
+      <!-- Tombol Check In / Check Out -->
+      <div class="container mx-auto px-4 py-8">
+    
+        <div x-data="{ checkedIn: {{ session('absen_today') ? 'true' : 'false' }} }" class="mb-6">
+            <!-- Tombol Check In -->
+            <template x-if="!checkedIn">
+                <div
+                    @click.prevent="
+                        fetch('{{ route('absensi.cekIn') }}', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                'Accept': 'application/json',
+                            },
+                            body: JSON.stringify({})
+                        }).then(response => {
+                            if (response.ok) {
+                                checkedIn = true;
+                            }
+                        })
+                    "
+                    class="flex flex-col items-center justify-center bg-green-100 border border-green-300 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 cursor-pointer">
+                    <p class="text-base font-semibold text-green-800">Check In</p>
+                </div>
+            </template>
+    
+            <!-- Tombol Check Out -->
+            <template x-if="checkedIn">
+                <div
+                    @click.prevent="
+                        fetch('{{ route('absensi.cekOut') }}', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                'Accept': 'application/json',
+                            },
+                            body: JSON.stringify({})
+                        }).then(response => {
+                            if (response.ok) {
+                                checkedIn = false;
+                            }
+                        })
+                    "
+                    class="flex flex-col items-center justify-center bg-red-100 border border-red-300 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 cursor-pointer">
+                    <p class="text-base font-semibold text-red-800">Check Out</p>
+                </div>
+            </template>
         </div>
-        <div class="bg-red-50 border border-red-200 rounded-xl p-4 text-center shadow-sm hover:shadow-md transition">
-          <p class="text-sm font-medium text-red-700">Check Out</p>
-        </div>
-      </div>
-  
+    </div>
+
     <!-- Stats Cards -->
     <div class="mb-6">
         <h3 class="text-base font-semibold text-gray-700 mb-3 flex items-center space-x-2">
@@ -91,20 +133,25 @@
         </h3>
     
         <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-5 shadow-sm">
-        <div class="grid grid-cols-3 gap-4 text-center">
-            <div>
-            <p class="text-xs text-gray-500 mb-1">Tanggal</p>
-            <p class="text-sm font-medium text-indigo-700">{{ date('d-m-Y') }}</p>
+            <div class="grid grid-cols-3 gap-4 text-center mt-6">
+                <div>
+                    <p class="text-xs text-gray-500 mb-1">Tanggal</p>
+                    <p class="text-sm font-medium text-indigo-700">{{ now()->format('d-m-Y') }}</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 mb-1">Jam Masuk</p>
+                    <p class="text-sm font-medium text-green-700">
+                        {{ $absensi?->jam_masuk ?? '-' }}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 mb-1">Jam Keluar</p>
+                    <p class="text-sm font-medium text-red-600">
+                        {{ $absensi?->jam_pulang ?? '-' }}
+                    </p>
+                </div>
             </div>
-            <div>
-            <p class="text-xs text-gray-500 mb-1">Jam Masuk</p>
-            <p class="text-sm font-medium text-green-700">08:00</p>
-            </div>
-            <div>
-            <p class="text-xs text-gray-500 mb-1">Jam Keluar</p>
-            <p class="text-sm font-medium text-red-600">17:00</p>
-            </div>
-        </div>
+            
         </div>
     </div>  
       

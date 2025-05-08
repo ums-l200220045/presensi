@@ -1,7 +1,9 @@
 <?php
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PegawaiController;
+
 
 
 
@@ -10,9 +12,6 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.post'); // 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth:admin']], function () {
-    // Route::get('dashboard', function () {
-    //     return view('admin.dashboard');
-    // })->name('admin.dashboard');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('input-pegawai', function () {
@@ -34,5 +33,11 @@ Route::group(['middleware' => ['auth:pegawai']], function () {
     Route::get('rekap', function() {
         return view('pegawai.rekap');
     })->name('rekap');
+
+    Route::post('/absensi/cek-in', [AbsensiController::class, 'cekIn'])->name('absensi.cekIn');
+    Route::post('/absensi/cek-out', [AbsensiController::class, 'cekOut'])->name('absensi.cekOut');
+
+    Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi.index');
+
 
 });

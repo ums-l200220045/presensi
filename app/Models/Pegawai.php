@@ -14,4 +14,12 @@ class Pegawai extends Model implements AuthenticatableContract
     protected $fillable = ['name', 'email', 'password', 'jabatan', 'bidang'];
 
     protected $hidden = ['password'];
+
+    // app/Models/Pegawai.php
+
+    public function absensis()
+    {
+        return $this->hasMany(Absensi::class);
+    }
+
 }
