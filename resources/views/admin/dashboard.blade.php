@@ -96,33 +96,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Grafik Presensi -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="font-semibold text-lg mb-4">Statistik Presensi Bulan Ini</h3>
-            <div class="h-64">
-                <!-- Tempat untuk grafik (bisa menggunakan Chart.js dll) -->
-                <div class="bg-gray-100 rounded h-full flex items-center justify-center">
-                    <p class="text-gray-500">Grafik Presensi</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="font-semibold text-lg mb-4">Top 5 Pegawai Teladan</h3>
-            <div class="space-y-4">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="h-10 w-10 rounded-full">
-                        <div>
-                            <p class="font-medium">Dewi Lestari</p>
-                            <p class="text-sm text-gray-500">100% kehadiran</p>
-                        </div>
-                    </div>
-                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm">Teladan</span>
-                </div>
-                <!-- Tambahan pegawai teladan lainnya -->
             </div>
         </div>
     </div>
