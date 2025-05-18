@@ -21,7 +21,13 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::post('/pegawai', [PegawaiController::class, 'store'])->name('pegawai.store');
 
     Route::get('/pegawai', [PegawaiController::class, 'list'])->name('pegawai.index');
+    Route::delete('/pegawai/{pegawai}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy'); 
 
+        // Untuk menampilkan form edit
+    Route::get('/pegawai/{pegawai}/edit', [PegawaiController::class, 'edit'])->name('pegawai.edit');
+
+    // Untuk menyimpan perubahan (update)
+    Route::put('/pegawai/{pegawai}', [PegawaiController::class, 'update'])->name('pegawai.update');
 
 });
 

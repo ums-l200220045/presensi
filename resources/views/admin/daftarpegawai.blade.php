@@ -20,18 +20,18 @@
             <td class="px-6 py-4 text-center text-gray-700">{{ $pegawai->bidang }}</td>
             <td class="px-6 py-4 text-center">
               <div class="flex items-center justify-center gap-2">
-                <a href=""
-                   class="px-3 py-1 bg-yellow-400 text-white rounded-md text-xs hover:bg-yellow-500 transition">
+                <a href="{{ route('pegawai.edit', $pegawai->id) }}"
+                  class="px-3 py-1 bg-yellow-400 text-white rounded-md text-xs hover:bg-yellow-500 transition">
                   Edit
                 </a>
-                <form action="" method="POST"
-                      onsubmit="return confirm('Yakin ingin menghapus data ini?');">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit"
-                          class="px-3 py-1 bg-red-500 text-white rounded-md text-xs hover:bg-red-600 transition">
-                    Hapus
-                  </button>
+                <form action="{{ route('pegawai.destroy', $pegawai->id) }}" method="POST" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" 
+                            class="px-3 py-1 bg-red-500 text-white rounded-md text-xs hover:bg-red-600 transition"
+                            onclick="return confirm('Apakah Anda yakin ingin menghapus data pegawai ini?')">
+                        Hapus
+                    </button>
                 </form>
               </div>
             </td>

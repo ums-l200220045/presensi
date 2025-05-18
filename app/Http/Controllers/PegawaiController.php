@@ -38,5 +38,51 @@ class PegawaiController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Data pegawai berhasil ditambahkan!');
+
+    }
+   public function destroy($id)
+    {
+        // Cari pegawai berdasarkan ID
+        $pegawai = Pegawai::findOrFail($id);
+        
+        // Hapus data
+        $pegawai->delete();
+        
+        // Redirect dengan pesan sukses
+        return redirect()->route('pegawai.index')
+            ->with('success', 'Data pegawai berhasil dihapus');
+    }
+
+    public function update(Request $request, Pegawai $pegawai)
+    {
+        $validated = $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:8',
+            'jabatan' => 'required',
+            'bidang' => 'required'
+        ]);
+        
+        // Update data dengan mapping field yang benar
+        $updateData = [
+            'name' => $validated['nama'],
+            'email' => $validated['email'],
+            'jabatan' => $validated['jabatan'],
+            'bidang' => $validated['bidang']
+        ];
+        
+        if ($request->filled('password')) {
+            $updateData['password'] = bcrypt($validated['password']);
+        }
+        
+        $pegawai->update($updateData);
+        
+        return redirect()->route('pegawai.index')
+            ->with('success', 'Data pegawai berhasil diperbarui');
+    }
+
+    public function edit(Pegawai $pegawai)
+    {
+        return view('admin/editpegawai', compact('pegawai'));
     }
 }
