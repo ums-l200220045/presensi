@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Geolocation Test</title>
+    </head>
+    <body>
+        <button onclick="getLocation()">Cek Lokasi</button>
+        <p id="status"></p>
+
+        <script>
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (pos) => {
+                            document.getElementById("status").innerText =
+                                "Lat: " +
+                                pos.coords.latitude +
+                                ", Lng: " +
+                                pos.coords.longitude;
+                        },
+                        (err) => {
+                            document.getElementById("status").innerText =
+                                "Error: " + err.message;
+                        }
+                    );
+                } else {
+                    document.getElementById("status").innerText =
+                        "Geolocation not supported.";
+                }
+            }
+        </script>
+    </body>
+</html>

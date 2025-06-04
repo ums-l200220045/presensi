@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('absensis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pegawai_id');
+            $table->foreignId('pegawai_id')->constrained('users')->onDelete('cascade');
             $table->date('tanggal');
             $table->time('jam_masuk')->nullable();
             $table->time('jam_pulang')->nullable();
             $table->timestamps();
-
-            $table->foreign('pegawai_id')->references('id')->on('pegawais')->onDelete('cascade');
         });
     }
+
 
     public function down()
     {
