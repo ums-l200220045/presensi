@@ -86,11 +86,10 @@ return [
             'driver' => 'monolog',
             'level' => env('LOG_LEVEL', 'debug'),
             'handler' => env('LOG_PAPERTRAIL_HANDLER', SyslogUdpHandler::class),
-            'handler_with' => [
-                'host' => env('PAPERTRAIL_URL'),
-                'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
-            ],
+            'driver'  => 'monolog',
+            'handler' => env('LOG_PAPERTRAIL_HANDLER', SyslogUdpHandler::class),
+            'host'    => env('PAPERTRAIL_URL', 'null'),
+            'port'    => env('PAPERTRAIL_PORT', 'null'),
             'processors' => [PsrLogMessageProcessor::class],
         ],
 
