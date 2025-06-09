@@ -147,8 +147,8 @@
       
       <!-- Lokasi Script -->
       <script>
-        const officeLat = -7.550099;
-        const officeLng = 110.769895;
+        const officeLat = -7.552883;
+        const officeLng = 110.764593;
         const allowedRadius = 100;
       
         function getDistance(lat1, lon1, lat2, lon2) {
