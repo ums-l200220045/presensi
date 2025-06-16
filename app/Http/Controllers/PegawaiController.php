@@ -39,7 +39,7 @@ class PegawaiController extends Controller
         ]);
 
         // Login otomatis setelah registrasi
-        Auth::login($pegawai);
+        Auth::guard('pegawai')->login($pegawai);
 
         return redirect()->route('pegawai.home')->with('success', 'Pendaftaran berhasil, Anda telah login.');
     }
