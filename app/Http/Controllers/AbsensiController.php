@@ -10,14 +10,13 @@ class AbsensiController extends Controller
 {
     public function index()
     {
-        $pegawaiId = \Illuminate\Support\Facades\Auth::id();
+        $pegawaiId = Auth::id();
         $today = now()->toDateString();
 
         $absensi = Absensi::where('pegawai_id', $pegawaiId)
             ->where('tanggal', $today)
             ->first();
 
-        // Tetap set session agar tombol sesuai kondisi Check In / Out
         if ($absensi && $absensi->jam_masuk && !$absensi->jam_pulang) {
             session(['absen_today' => true]);
         } else {
@@ -29,8 +28,16 @@ class AbsensiController extends Controller
 
     public function cekIn(Request $request)
     {
+        if (!Auth::check()) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
         $pegawaiId = Auth::id();
         $tanggal = now()->toDateString();
+
+        if (!$pegawaiId) {
+            return response()->json(['message' => 'ID pegawai tidak ditemukan.'], 400);
+        }
 
         $absensi = Absensi::firstOrCreate(
             ['pegawai_id' => $pegawaiId, 'tanggal' => $tanggal],
@@ -44,6 +51,10 @@ class AbsensiController extends Controller
 
     public function cekOut(Request $request)
     {
+        if (!Auth::check()) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
         $pegawaiId = Auth::id();
         $tanggal = now()->toDateString();
 
@@ -61,4 +72,3 @@ class AbsensiController extends Controller
         return response()->json(['message' => 'Sudah Check Out atau belum Check In'], 400);
     }
 }
-
